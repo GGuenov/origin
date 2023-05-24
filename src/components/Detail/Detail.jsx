@@ -22,11 +22,13 @@ export default function Detail(props) {
   }, [detailId]);
 
   return (
-    <div className={styles.container}>
-      <Link to="/home">
-        <button>Volver!</button>
-      </Link>
-      <div className={styles.otroDiv}>
+    <div>
+      <div>
+        <Link to="/home">
+          <button>Volver!</button>
+        </Link>
+      </div>
+      <div className={styles.container}>
         <h1>Detail</h1>
         <h2>{character.name}</h2>
         <img
