@@ -1,0 +1,49 @@
+.container {
+  display: center;
+  margin-left: 33%;
+  margin-top: 9%;
+  border: 3px solid rgb(206, 111, 111);
+  background-color: rgba(128, 128, 128, 0);
+  border-radius: 10%;
+  color: black;
+  font-style: initial;
+  width: 24%;
+  padding: 100px;
+  box-shadow: 0 0 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container button {
+  background-color: rgb(187, 187, 187);
+  color: rgb(0, 0, 0);
+  border-radius: 5%;
+}
+
+.dataContainer {
+  text-align: center;
+  padding: 2px;
+}
+
+.dataContainer h2 {
+  margin: flex;
+  font-size: 16px;
+  color: rgb(219, 175, 93);
+}
+.dataContainer h3 {
+  margin: flex;
+  font-size: 16px;
+  color: rgb(219, 143, 93);
+}
+.dataContainer h4 {
+  margin: 2px;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(221, 156, 34);
+}
+.errors {
+  color: red;
+}

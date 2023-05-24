@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://www.xtrafondos.com/wallpapers/rick-y-morty-como-breaking-bad-5441.jpg");
+  background-size: cover;
 }
 
 code {
