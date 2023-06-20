@@ -1,0 +1,65 @@
+.container {
+  border: 3px solid grey;
+  background-color: rgb(161, 106, 44);
+  border-radius: 10px;
+  width: 170px;
+  padding: 10px;
+  box-shadow: 0 0 10px;
+}
+
+.image {
+  margin-right: 10%;
+  width: 150px;
+}
+.image button {
+  background-color: rgba(0, 255, 255, 0);
+  border-color: rgba(250, 235, 215, 0);
+  color: rgb(255, 0, 64);
+  font-weight: 900;
+  border-radius: 0px 0px 0px 15px;
+}
+
+.image2 button {
+  background-color: rgba(0, 255, 255, 0);
+  border-color: rgba(250, 235, 215, 0);
+  color: rgb(255, 0, 64);
+  font-weight: 900;
+  border-radius: 0px 0px 0px 15px;
+}
+.buttonFav {
+  margin-right: auto;
+  justify-content: flex-end;
+  color: rgb(31, 92, 114);
+  border-radius: 20px;
+}
+
+.buttonContainer {
+  margin-left: 50%;
+  justify-content: flex-end;
+  color: white;
+  border-radius: 0px 35px 0px 15px;
+}
+
+.dataContainer {
+  text-align: center;
+  padding: 2px;
+  font-size: 16px;
+  color: black;
+}
+
+.dataContainer h2 {
+  margin: flex;
+  font-size: 16px;
+  color: rgb(219, 175, 93);
+}
+.dataContainer h3 {
+  margin: flex;
+  font-size: 16px;
+  color: rgb(219, 143, 93);
+}
+.dataContainer h4 {
+  margin: 2px;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(221, 156, 34);
+}
