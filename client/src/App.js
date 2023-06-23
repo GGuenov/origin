@@ -3,7 +3,7 @@ import "./App.css";
 import Cards from "./components/Cards/Cards.jsx";
 import { useDispatch } from "react-redux";
 import Nav from "./components/nav/Nav";
-import { removeFav } from "./Redux/actions";
+import { removeComponentFav, removeFav } from "./Redux/actions";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import About from "./components/About/About";
@@ -23,16 +23,19 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  function login(userData) {
-    const { username, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?username=${username}&password=${password}`).then(
-      ({ data }) => {
-        const { access } = data;
-        setAccess(data);
-        access && navigate("/home");
-      }
-    );
+  async function login(userData) {
+    try {
+      const { username, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+      const { data } = await axios(
+        URL + `?username=${username}&password=${password}`
+      );
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // function login(userData) {
@@ -45,24 +48,26 @@ function App() {
     !access && navigate("/");
   }, [access]);
 
-  function searchHandler(id) {
+  async function searchHandler(id) {
     // setCharacters([...characters, example]);
-
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
+    const URL = `https://rickandmortyapi.com/api/character/${id}`;
+    try {
+      const { data } = await axios(URL);
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+        window.alert("¡No hay personajes con este ID!");
       }
-    );
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function closeHandler(id) {
     let deleted = characters.filter((character) => character.id !== Number(id));
 
     dispatch(removeFav(id));
+    dispatch(removeComponentFav(id));
 
     setCharacters(deleted);
   }
@@ -101,7 +106,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Form login={login} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/favorites"
+          element={<Favorites onClose={closeHandler} />}
+        />
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={closeHandler} />}

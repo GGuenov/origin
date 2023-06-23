@@ -7,7 +7,7 @@ import {
   resetFavorites,
 } from "../../Redux/actions";
 
-export default function Favorites() {
+export default function Favorites(myFavorites, closeHandler) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.myFavorites);
 
@@ -26,17 +26,17 @@ export default function Favorites() {
   return (
     <div>
       <select placeholder="Gender" onChange={handleFilter}>
-        {["Male", "Female", "unknown", "Genderless"].map((gender) => (
+        {["Todxs", "Male", "Female", "unknown", "Genderless"].map((gender) => (
           <option value={gender}>{gender}</option>
         ))}
       </select>
       <select placeholder="Orden" onChange={handleSort}>
-        {["Ascendente", "Descendente"].map((order) => (
+        {["Toca Toca", "Ascendente", "Descendente"].map((order) => (
           <option value={order}>{order}</option>
         ))}
       </select>
-      <button onClick={handleReset}>Reset Filters</button>
-      <Cards characters={favorites} />
+      <button onClick={handleReset}>Resetear Filtros</button>
+      <Cards characters={favorites} onClose={closeHandler} />
     </div>
   );
 }
