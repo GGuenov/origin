@@ -5,9 +5,10 @@ import {
   orderFavorites,
   filterFavorites,
   resetFavorites,
+  getFavs,
 } from "../../Redux/actions";
 
-export default function Favorites(myFavorites, closeHandler) {
+export default function Favorites(closeHandler) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.myFavorites);
 
@@ -20,6 +21,7 @@ export default function Favorites(myFavorites, closeHandler) {
   }
 
   function handleReset() {
+    getFavs(favorites);
     dispatch(resetFavorites());
   }
 

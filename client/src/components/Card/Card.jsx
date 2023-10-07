@@ -9,6 +9,7 @@ function Card(character) {
   const { image, name, id, onClose, addFav, removeFav, favorites } = character;
   console.log(id);
   console.log(character);
+  console.log(favorites);
   const [closeBtn, setCloseBtn] = useState(true);
   const [fav, setFav] = useState(false);
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
+export const GET_FAV = "GET_FAV";
 export const ORDER = "ORDER";
 export const FILTER = "FILTER";
 export const RESET = "RESET";
@@ -21,12 +22,28 @@ export const addFav = (character) => {
     console.log(error);
   }
 };
+export const getFavs = () => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.get(
+        `http://localhost:3001/rickandmorty/fav`
+      );
+      return dispatch({
+        type: GET_FAV,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const removeFav = (id) => {
   try {
-    const endpoint = "http://localhost:3001/rickandmorty/fav/" + id;
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
     return async (dispatch) => {
       const { data } = await axios.delete(endpoint);
+      console.log({ data });
       return dispatch({
         type: REMOVE_FAV,
         payload: data,

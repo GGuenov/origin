@@ -3,6 +3,15 @@
   background-color: rgb(19, 169, 169);
   font-size: medium;
 }
+.buttoms:hover {
+  size: 20px;
+  background-color: rgb(12, 113, 113);
+  font-size: large;
+}
+.container {
+  margin-top: 10px;
+}
+
 /* 
 .activeHome {
     size: 20px;

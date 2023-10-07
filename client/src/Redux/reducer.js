@@ -1,5 +1,6 @@
 import {
   ADD_FAV,
+  GET_FAV,
   REMOVE_FAV,
   ORDER,
   FILTER,
@@ -19,6 +20,8 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case REMOVE_FAV:
+      return { ...state, myFavorites: action.payload };
+    case GET_FAV:
       return { ...state, myFavorites: action.payload };
 
     case ORDER:
@@ -47,7 +50,7 @@ export default function rootReducer(state = initialState, action) {
     case RESET:
       return {
         ...state,
-        myFavorites: state.allCharacters,
+        myFavorites: state.myFavorites,
       };
     case REMOVE_COMPONENT_FAV:
       const removeFav = state.myFavorites.filter(
