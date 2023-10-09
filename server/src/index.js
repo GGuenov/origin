@@ -4,6 +4,9 @@ const router = require("./routes/index");
 const PORT = 3001;
 const cors = require("cors");
 //const getCharById = require("./src/controllers/getCharByld");
+const {
+  getAllCharactersHandler,
+} = require("../src/controllers/charactersHandler");
 
 server.use(cors());
 
@@ -21,5 +24,6 @@ server.use(express.json());
 server.use("/rickandmorty", router);
 
 server.listen(PORT, () => {
+  getAllCharactersHandler();
   console.log("Server raised in port: " + PORT);
 });

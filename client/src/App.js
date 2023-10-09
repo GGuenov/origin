@@ -63,14 +63,14 @@ function App() {
     }
   }
 
-  function closeHandler(id) {
-    let deleted = characters.filter((character) => character.id !== Number(id));
+  // function closeHandler(id) {
+  //   let deleted = characters.filter((character) => character.id !== Number(id));
 
-    dispatch(removeFav(id));
-    dispatch(removeComponentFav(id));
+  //   dispatch(removeFav(id));
+  //   dispatch(removeComponentFav(id));
 
-    setCharacters(deleted);
-  }
+  //   setCharacters(deleted);
+  // }
 
   function randomHandler() {
     let haveIt = [];
@@ -106,14 +106,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Form login={login} />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/favorites"
-          element={<Favorites onClose={closeHandler} />}
-        />
-        <Route
-          path="/home"
-          element={<Cards characters={characters} onClose={closeHandler} />}
-        />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/home" element={<Cards characters={characters} />} />
 
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<ErrorPage />} />

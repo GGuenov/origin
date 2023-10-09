@@ -1,4 +1,5 @@
 //import {connect} from "react-redux";
+import React, { useEffect } from "react";
 import Cards from "../../components/Cards/Cards";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -8,7 +9,7 @@ import {
   getFavs,
 } from "../../Redux/actions";
 
-export default function Favorites(closeHandler) {
+const Favorites = () => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.myFavorites);
 
@@ -25,6 +26,9 @@ export default function Favorites(closeHandler) {
     dispatch(resetFavorites());
   }
 
+  useEffect(() => {
+    console.log(favorites);
+  }, [favorites]);
   return (
     <div>
       <select placeholder="Gender" onChange={handleFilter}>
@@ -38,11 +42,11 @@ export default function Favorites(closeHandler) {
         ))}
       </select>
       <button onClick={handleReset}>Resetear Filtros</button>
-      <Cards characters={favorites} onClose={closeHandler} />
+      <Cards characters={favorites} />
     </div>
   );
-}
-
+};
+export default Favorites;
 // const mapStateToProps = (state) => {
 //   return {
 //     favorites: state.myFavorites,
